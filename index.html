@@ -3,194 +3,177 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard AD5 — Performance de E-commerce em Tempo Real</title>
-<meta name="description" content="Visualize vendas, ROAS, investimento e campanhas do seu e-commerce em um dashboard profissional conectado ao GA4. Decisões mais rápidas, resultado melhor.">
-<meta property="og:title" content="Dashboard AD5 — Performance de E-commerce em Tempo Real">
-<meta property="og:description" content="Visualize vendas, ROAS e campanhas do seu e-commerce em um dashboard profissional conectado ao GA4.">
+<title>ROASview — Pare de adivinhar o ROAS. Veja o número real, agora.</title>
+<meta name="description" content="Dashboard profissional conectado ao GA4. Veja ROAS, vendas e campanhas em tempo real. Dados confiáveis para decisões assertivas.">
+<meta property="og:title" content="ROASview — Dados reais. Decisões assertivas.">
+<meta property="og:description" content="Dashboard de performance para e-commerce conectado direto ao GA4. ROAS, vendas, campanhas e funil em tempo real.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://ad5experts.online">
-<meta name="theme-color" content="#0f0e17">
-<link rel="canonical" href="https://ad5experts.online">
-
-<!-- ═══════════════════════════════════════════
-     GTM — substitua GTM-XXXXXXX pelo seu ID
-     ═══════════════════════════════════════════ -->
+<meta property="og:url" content="https://roasview.com.br">
+<meta name="theme-color" content="#10b981">
+<link rel="canonical" href="https://roasview.com.br">
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
-
 <style>
-/* ── RESET & BASE ── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#0b0a14;
-  --bg2:#110f1e;
-  --card:#16142a;
-  --card2:#1c1a32;
-  --border:rgba(255,255,255,.08);
-  --border2:rgba(255,255,255,.14);
-  --text:#f0eeff;
-  --text2:#a09dc0;
-  --text3:#6b6890;
-  --accent:#7c5cfc;
-  --accent2:#a78bfa;
-  --green:#10d9a0;
-  --red:#ff5c5c;
-  --yellow:#fbbf24;
-  --font:'Inter',system-ui,sans-serif;
-  --r:12px;
-  --r2:20px;
+  --bg:#0b0a14;--bg2:#0f0e1a;--card:#16142a;--card2:#1c1a32;
+  --border:rgba(255,255,255,.07);--border2:rgba(255,255,255,.12);
+  --text:#f0eeff;--text2:#a09dc0;--text3:#6b6890;
+  --green:#10b981;--green2:#0d9668;--green3:rgba(16,185,129,.12);
+  --amber:#f59e0b;--red:#ef4444;--purple:#7c5cfc;
+  --font:'Inter',system-ui,sans-serif;--r:12px;--r2:20px
 }
 html{scroll-behavior:smooth}
 body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
-img{max-width:100%}
-.container{max-width:1100px;margin:0 auto;padding:0 24px}
-.btn-primary{display:inline-flex;align-items:center;gap:10px;padding:16px 32px;background:var(--accent);color:#fff;border-radius:var(--r);font-weight:700;font-size:1rem;cursor:pointer;border:none;transition:all .2s;letter-spacing:-.01em}
-.btn-primary:hover{background:#6b4ef5;transform:translateY(-2px);box-shadow:0 8px 32px rgba(124,92,252,.4)}
-.btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:transparent;color:var(--text);border:1px solid var(--border2);border-radius:var(--r);font-weight:600;font-size:.9rem;cursor:pointer;transition:all .2s}
-.btn-secondary:hover{border-color:var(--accent2);color:var(--accent2)}
+.container{max-width:1080px;margin:0 auto;padding:0 24px}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;padding:16px 32px;background:var(--green);color:#fff;border-radius:var(--r);font-weight:700;font-size:1rem;cursor:pointer;border:none;transition:all .2s;letter-spacing:-.01em;font-family:var(--font)}
+.btn-primary:hover{background:var(--green2);transform:translateY(-2px);box-shadow:0 8px 28px rgba(16,185,129,.35)}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:transparent;color:var(--text);border:1px solid var(--border2);border-radius:var(--r);font-weight:600;font-size:.9rem;cursor:pointer;transition:all .2s;font-family:var(--font)}
+.btn-secondary:hover{border-color:var(--green);color:var(--green)}
 .tag{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:20px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
-.tag-purple{background:rgba(124,92,252,.15);color:var(--accent2);border:1px solid rgba(124,92,252,.3)}
-.tag-green{background:rgba(16,217,160,.12);color:var(--green);border:1px solid rgba(16,217,160,.25)}
+.tag-green{background:rgba(16,185,129,.12);color:var(--green);border:1px solid rgba(16,185,129,.25)}
+.tag-purple{background:rgba(124,92,252,.12);color:#a78bfa;border:1px solid rgba(124,92,252,.25)}
 section{padding:96px 0}
 
-/* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;backdrop-filter:blur(16px);background:rgba(11,10,20,.8);border-bottom:1px solid var(--border)}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 0;backdrop-filter:blur(16px);background:rgba(11,10,20,.85);border-bottom:1px solid var(--border)}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px}
 .nav-logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.05rem;letter-spacing:-.02em}
-.nav-logo-mark{width:36px;height:36px;background:linear-gradient(135deg,var(--accent),#a78bfa);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px}
+.nav-logo-mark{width:36px;height:36px;background:var(--card2);border:1px solid rgba(16,185,129,.3);border-radius:9px;display:flex;align-items:center;justify-content:center}
+.nav-logo-mark svg{width:20px;height:20px}
+.nav-logo-roas{color:var(--green)}
+.nav-logo-view{color:var(--text)}
 .nav-links{display:flex;align-items:center;gap:28px}
 .nav-links a{font-size:.85rem;color:var(--text2);transition:color .2s}
 .nav-links a:hover{color:var(--text)}
 .nav-cta{padding:10px 22px;font-size:.85rem}
 
-/* ── HERO ── */
-.hero{padding:160px 0 96px;text-align:center;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:600px;background:radial-gradient(ellipse,rgba(124,92,252,.18) 0%,transparent 70%);pointer-events:none}
-.hero-tag{margin-bottom:24px}
-.hero h1{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:900;letter-spacing:-.04em;line-height:1.08;margin-bottom:20px}
-.hero h1 span{background:linear-gradient(135deg,var(--accent2),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-sub{font-size:clamp(1rem,2vw,1.2rem);color:var(--text2);max-width:600px;margin:0 auto 40px;line-height:1.7}
-.hero-ctas{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:56px}
-.hero-proof{display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap}
-.proof-item{display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3)}
-.proof-dot{width:6px;height:6px;border-radius:50%;background:var(--green)}
+/* HERO */
+.hero{padding:156px 0 88px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:700px;height:500px;background:radial-gradient(ellipse,rgba(16,185,129,.14) 0%,transparent 70%);pointer-events:none}
+.hero-tag{margin-bottom:22px}
+.hero h1{font-size:clamp(2.2rem,5.5vw,4rem);font-weight:900;letter-spacing:-.05em;line-height:1.06;margin-bottom:20px}
+.hero h1 .hl{color:var(--green)}
+.hero-sub{font-size:clamp(1rem,2vw,1.15rem);color:var(--text2);max-width:580px;margin:0 auto 40px;line-height:1.75}
+.hero-ctas{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:48px}
+.hero-proof{display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap}
+.proof-item{display:flex;align-items:center;gap:6px;font-size:.79rem;color:var(--text3)}
+.proof-dot{width:5px;height:5px;border-radius:50%;background:var(--green)}
 
-/* ── DASHBOARD MOCKUP ── */
-.mockup-wrap{margin-top:16px;border-radius:var(--r2);border:1px solid var(--border2);background:var(--card);overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.6),0 0 0 1px rgba(124,92,252,.15)}
-.mockup-bar{padding:12px 16px;background:var(--card2);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
-.dot{width:11px;height:11px;border-radius:50%}
-.mockup-url{flex:1;background:rgba(255,255,255,.05);border-radius:6px;padding:5px 12px;font-size:.72rem;color:var(--text3);margin:0 12px}
-.mockup-body{padding:20px}
-.mock-kgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
-.mock-kcard{background:var(--card2);border-radius:10px;padding:14px;border:1px solid var(--border);position:relative;overflow:hidden}
+/* MOCKUP */
+.mockup-wrap{margin-top:12px;border-radius:var(--r2);border:1px solid var(--border2);background:var(--card);overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.7),0 0 0 1px rgba(16,185,129,.1)}
+.mockup-bar{padding:11px 16px;background:var(--card2);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:7px}
+.dot{width:10px;height:10px;border-radius:50%}
+.mockup-url{flex:1;background:rgba(255,255,255,.04);border-radius:6px;padding:5px 12px;font-size:.71rem;color:var(--text3);margin:0 12px}
+.mockup-body{padding:18px}
+.mock-kgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
+.mock-kcard{background:var(--card2);border-radius:9px;padding:13px;border:1px solid var(--border);position:relative;overflow:hidden}
 .mock-kcard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
-.mk1::before{background:#7c5cfc}.mk2::before{background:#ff5c5c}.mk3::before{background:#10d9a0}.mk4::before{background:#fbbf24}
-.mock-klbl{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);margin-bottom:6px}
-.mock-kval{font-size:1.1rem;font-weight:800;color:var(--text);letter-spacing:-.03em}
-.mock-kdelta{font-size:.62rem;font-weight:700;margin-top:4px}
+.mk1::before{background:var(--green)}.mk2::before{background:var(--red)}.mk3::before{background:var(--purple)}.mk4::before{background:var(--amber)}
+.mock-klbl{font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);margin-bottom:5px}
+.mock-kval{font-size:1.05rem;font-weight:800;color:var(--text);letter-spacing:-.03em}
+.mock-kdelta{font-size:.6rem;font-weight:700;margin-top:3px}
 .delta-up{color:var(--green)}.delta-dn{color:var(--red)}
 .mock-charts{display:grid;grid-template-columns:2fr 1fr;gap:10px}
-.mock-chart-card{background:var(--card2);border-radius:10px;padding:14px;border:1px solid var(--border)}
-.mock-chart-title{font-size:.65rem;font-weight:700;color:var(--text2);margin-bottom:10px;text-transform:uppercase;letter-spacing:.05em}
-.mock-bars{display:flex;align-items:flex-end;gap:5px;height:60px}
-.mock-bar{flex:1;border-radius:3px 3px 0 0;opacity:.85;min-width:6px}
-.mock-line{height:60px;position:relative;overflow:hidden}
-.mock-line svg{width:100%;height:100%}
-.mock-donut-wrap{display:flex;align-items:center;gap:12px}
-.mock-donut{width:60px;height:60px;flex-shrink:0}
+.mock-chart-card{background:var(--card2);border-radius:9px;padding:13px;border:1px solid var(--border)}
+.mock-ctitle{font-size:.62rem;font-weight:700;color:var(--text2);margin-bottom:9px;text-transform:uppercase;letter-spacing:.05em}
+.mock-bars{display:flex;align-items:flex-end;gap:4px;height:56px}
+.mock-bar{flex:1;border-radius:3px 3px 0 0;min-width:5px}
+.mock-donut-wrap{display:flex;align-items:center;gap:10px}
 .mock-donut-leg{display:flex;flex-direction:column;gap:5px;flex:1}
-.mock-leg-item{display:flex;align-items:center;gap:5px;font-size:.6rem;color:var(--text2)}
+.mock-leg-item{display:flex;align-items:center;gap:5px;font-size:.58rem;color:var(--text2)}
 .mock-leg-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
 
-/* ── DOR ── */
+/* DOR */
 .pain{background:var(--bg2)}
-.pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:48px}
-.pain-card{padding:24px;border-radius:var(--r);background:var(--card);border:1px solid var(--border)}
-.pain-ico{font-size:1.6rem;margin-bottom:12px}
-.pain-title{font-size:1rem;font-weight:700;margin-bottom:8px}
-.pain-desc{font-size:.85rem;color:var(--text2);line-height:1.65}
+.pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:44px}
+.pain-card{padding:22px;border-radius:var(--r);background:var(--card);border:1px solid var(--border)}
+.pain-ico{font-size:1.5rem;margin-bottom:10px}
+.pain-title{font-size:.95rem;font-weight:700;margin-bottom:7px}
+.pain-desc{font-size:.83rem;color:var(--text2);line-height:1.65}
 
-/* ── FEATURES ── */
-.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:56px}
-.feat-card{padding:28px;border-radius:var(--r2);background:var(--card);border:1px solid var(--border);transition:all .25s}
-.feat-card:hover{border-color:rgba(124,92,252,.4);transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,.3)}
-.feat-ico{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px}
-.feat-title{font-size:1.02rem;font-weight:700;margin-bottom:8px}
-.feat-desc{font-size:.85rem;color:var(--text2);line-height:1.65}
-.feat-badge{display:inline-flex;margin-top:12px;font-size:.65rem;font-weight:700;padding:3px 10px;border-radius:20px;background:rgba(124,92,252,.15);color:var(--accent2)}
+/* FEATURES */
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:20px;margin-top:52px}
+.feat-card{padding:26px;border-radius:var(--r2);background:var(--card);border:1px solid var(--border);transition:all .25s}
+.feat-card:hover{border-color:rgba(16,185,129,.35);transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.3)}
+.feat-ico{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:19px;margin-bottom:14px}
+.feat-title{font-size:1rem;font-weight:700;margin-bottom:7px}
+.feat-desc{font-size:.84rem;color:var(--text2);line-height:1.65}
+.feat-badge{display:inline-flex;margin-top:10px;font-size:.64rem;font-weight:700;padding:3px 10px;border-radius:20px;background:rgba(16,185,129,.12);color:var(--green);border:1px solid rgba(16,185,129,.2)}
 
-/* ── NÚMEROS ── */
+/* NÚMEROS */
 .numbers{background:var(--bg2)}
-.numbers-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2px;margin-top:48px;border-radius:var(--r2);overflow:hidden;border:1px solid var(--border)}
-.num-item{padding:36px 28px;background:var(--card);text-align:center}
-.num-val{font-size:2.6rem;font-weight:900;letter-spacing:-.05em;background:linear-gradient(135deg,var(--accent2),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
-.num-lbl{font-size:.82rem;color:var(--text2);margin-top:8px;line-height:1.4}
+.numbers-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2px;margin-top:44px;border-radius:var(--r2);overflow:hidden;border:1px solid var(--border)}
+.num-item{padding:32px 24px;background:var(--card);text-align:center}
+.num-val{font-size:2.4rem;font-weight:900;letter-spacing:-.05em;color:var(--green);line-height:1}
+.num-lbl{font-size:.8rem;color:var(--text2);margin-top:7px;line-height:1.45}
 
-/* ── COMO FUNCIONA ── */
-.steps{counter-reset:step}
-.steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0;margin-top:56px;position:relative}
-.steps-grid::before{content:'';position:absolute;top:28px;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,var(--border2),transparent)}
-.step-item{text-align:center;padding:0 24px;position:relative;z-index:1}
-.step-num{width:56px;height:56px;border-radius:50%;background:var(--card2);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:900;color:var(--accent2);margin:0 auto 20px}
-.step-title{font-size:.98rem;font-weight:700;margin-bottom:8px}
-.step-desc{font-size:.83rem;color:var(--text2);line-height:1.6}
+/* COMO FUNCIONA */
+.steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;margin-top:52px;position:relative}
+.steps-grid::before{content:'';position:absolute;top:27px;left:12%;right:12%;height:1px;background:linear-gradient(90deg,transparent,var(--border2),transparent)}
+.step-item{text-align:center;padding:0 20px;position:relative;z-index:1}
+.step-num{width:54px;height:54px;border-radius:50%;background:var(--card2);border:2px solid var(--green);display:flex;align-items:center;justify-content:center;font-size:1.05rem;font-weight:900;color:var(--green);margin:0 auto 18px}
+.step-title{font-size:.96rem;font-weight:700;margin-bottom:7px}
+.step-desc{font-size:.82rem;color:var(--text2);line-height:1.6}
 
-/* ── PLANOS ── */
+/* PLANOS */
 .plans{background:var(--bg2)}
-.plans-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:56px;max-width:760px;margin-left:auto;margin-right:auto}
-.plan-card{border-radius:var(--r2);padding:32px;background:var(--card);border:1px solid var(--border);position:relative}
-.plan-card.featured{border:2px solid var(--accent);background:linear-gradient(160deg,rgba(124,92,252,.1),var(--card))}
-.plan-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:.7rem;font-weight:800;padding:4px 16px;border-radius:20px;white-space:nowrap;text-transform:uppercase;letter-spacing:.05em}
-.plan-name{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);margin-bottom:12px}
-.plan-price{display:flex;align-items:baseline;gap:4px;margin-bottom:6px}
-.plan-curr{font-size:1rem;font-weight:700;color:var(--text2);margin-top:6px}
-.plan-val{font-size:3rem;font-weight:900;letter-spacing:-.05em;line-height:1}
-.plan-period{font-size:.85rem;color:var(--text3)}
-.plan-desc{font-size:.82rem;color:var(--text2);margin-bottom:24px;line-height:1.55}
-.plan-divider{height:1px;background:var(--border);margin-bottom:20px}
-.plan-features{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
-.plan-features li{display:flex;align-items:flex-start;gap:10px;font-size:.84rem;color:var(--text2)}
+.plans-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px;margin-top:52px;max-width:720px;margin-left:auto;margin-right:auto}
+.plan-card{border-radius:var(--r2);padding:30px;background:var(--card);border:1px solid var(--border);position:relative}
+.plan-card.featured{border:2px solid var(--green);background:linear-gradient(160deg,rgba(16,185,129,.08),var(--card))}
+.plan-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--green);color:#fff;font-size:.68rem;font-weight:800;padding:4px 16px;border-radius:20px;white-space:nowrap;text-transform:uppercase;letter-spacing:.05em}
+.plan-name{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);margin-bottom:10px}
+.plan-price{display:flex;align-items:baseline;gap:3px;margin-bottom:5px}
+.plan-curr{font-size:.95rem;font-weight:700;color:var(--text2);margin-top:5px}
+.plan-val{font-size:2.8rem;font-weight:900;letter-spacing:-.05em;line-height:1}
+.plan-period{font-size:.82rem;color:var(--text3)}
+.plan-desc{font-size:.81rem;color:var(--text2);margin-bottom:22px;line-height:1.55}
+.plan-divider{height:1px;background:var(--border);margin-bottom:18px}
+.plan-features{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:26px}
+.plan-features li{display:flex;align-items:flex-start;gap:9px;font-size:.83rem;color:var(--text2)}
 .plan-features li .check{color:var(--green);font-weight:700;flex-shrink:0;margin-top:1px}
 .plan-features li .lock{color:var(--text3);flex-shrink:0;margin-top:1px}
-.plan-cta{width:100%;padding:15px;border-radius:var(--r);font-weight:700;font-size:.95rem;cursor:pointer;border:none;transition:all .2s;text-align:center;display:block}
-.plan-cta.primary{background:var(--accent);color:#fff}
-.plan-cta.primary:hover{background:#6b4ef5;transform:translateY(-1px);box-shadow:0 8px 24px rgba(124,92,252,.4)}
+.plan-cta{width:100%;padding:14px;border-radius:var(--r);font-weight:700;font-size:.93rem;cursor:pointer;border:none;transition:all .2s;text-align:center;display:block;font-family:var(--font)}
+.plan-cta.primary{background:var(--green);color:#fff}
+.plan-cta.primary:hover{background:var(--green2);transform:translateY(-1px);box-shadow:0 8px 20px rgba(16,185,129,.35)}
 .plan-cta.secondary{background:transparent;color:var(--text);border:1px solid var(--border2)}
-.plan-cta.secondary:hover{border-color:var(--accent2);color:var(--accent2)}
-.plan-guarantee{text-align:center;margin-top:28px;font-size:.78rem;color:var(--text3);display:flex;align-items:center;justify-content:center;gap:6px}
+.plan-cta.secondary:hover{border-color:var(--green);color:var(--green)}
+.plan-guarantee{text-align:center;margin-top:24px;font-size:.77rem;color:var(--text3);display:flex;align-items:center;justify-content:center;gap:6px}
 
-/* ── FAQ ── */
-.faq-list{max-width:720px;margin:48px auto 0;display:flex;flex-direction:column;gap:4px}
+/* FAQ */
+.faq-list{max-width:700px;margin:44px auto 0;display:flex;flex-direction:column;gap:4px}
 .faq-item{border-radius:var(--r);border:1px solid var(--border);overflow:hidden}
-.faq-q{width:100%;padding:18px 20px;background:var(--card);color:var(--text);font-size:.9rem;font-weight:600;text-align:left;cursor:pointer;border:none;display:flex;align-items:center;justify-content:space-between;gap:12px;font-family:var(--font);transition:background .15s}
+.faq-q{width:100%;padding:17px 20px;background:var(--card);color:var(--text);font-size:.88rem;font-weight:600;text-align:left;cursor:pointer;border:none;display:flex;align-items:center;justify-content:space-between;gap:12px;font-family:var(--font);transition:background .15s}
 .faq-q:hover{background:var(--card2)}
-.faq-icon{font-size:1.1rem;color:var(--accent2);flex-shrink:0;transition:transform .2s}
+.faq-icon{font-size:1.1rem;color:var(--green);flex-shrink:0;transition:transform .2s}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease}
-.faq-a p{padding:0 20px 18px;font-size:.85rem;color:var(--text2);line-height:1.7}
+.faq-a p{padding:0 20px 17px;font-size:.84rem;color:var(--text2);line-height:1.7}
 .faq-item.open .faq-a{max-height:300px}
 .faq-item.open .faq-icon{transform:rotate(45deg)}
 
-/* ── CTA FINAL ── */
+/* CTA FINAL */
 .cta-final{text-align:center;position:relative;overflow:hidden}
-.cta-final::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(124,92,252,.2) 0%,transparent 70%);pointer-events:none}
-.cta-final h2{font-size:clamp(1.8rem,4vw,3rem);font-weight:900;letter-spacing:-.04em;margin-bottom:16px}
-.cta-final p{font-size:1rem;color:var(--text2);max-width:480px;margin:0 auto 36px}
+.cta-final::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(16,185,129,.16) 0%,transparent 70%);pointer-events:none}
+.cta-final h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;letter-spacing:-.04em;margin-bottom:14px}
+.cta-final h2 .hl{color:var(--green)}
+.cta-final p{font-size:.98rem;color:var(--text2);max-width:460px;margin:0 auto 34px}
 
-/* ── FOOTER ── */
-footer{padding:40px 0;border-top:1px solid var(--border);text-align:center}
-.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
-.footer-logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:.9rem}
-.footer-links{display:flex;gap:20px}
-.footer-links a{font-size:.8rem;color:var(--text3);transition:color .2s}
+/* FOOTER */
+footer{padding:36px 0;border-top:1px solid var(--border);text-align:center}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+.footer-logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:.88rem}
+.footer-links{display:flex;gap:18px}
+.footer-links a{font-size:.78rem;color:var(--text3);transition:color .2s}
 .footer-links a:hover{color:var(--text2)}
-.footer-copy{font-size:.75rem;color:var(--text3)}
+.footer-copy{font-size:.73rem;color:var(--text3)}
 
-/* ── SECTION HEADER ── */
-.section-header{text-align:center;margin-bottom:0}
-.section-header h2{font-size:clamp(1.7rem,3.5vw,2.6rem);font-weight:900;letter-spacing:-.04em;margin:14px 0 16px}
-.section-header p{font-size:.95rem;color:var(--text2);max-width:560px;margin:0 auto;line-height:1.7}
+/* SECTION HEADER */
+.section-header{text-align:center}
+.section-header h2{font-size:clamp(1.65rem,3.5vw,2.5rem);font-weight:900;letter-spacing:-.04em;margin:13px 0 15px}
+.section-header h2 .hl{color:var(--green)}
+.section-header p{font-size:.93rem;color:var(--text2);max-width:540px;margin:0 auto;line-height:1.7}
 
-/* ── RESPONSIVE ── */
+/* RESPONSIVE */
 @media(max-width:768px){
   section{padding:64px 0}
   .nav-links{display:none}
@@ -200,23 +183,26 @@ footer{padding:40px 0;border-top:1px solid var(--border);text-align:center}
   .footer-inner{flex-direction:column;text-align:center}
 }
 @media(max-width:480px){
-  .hero{padding:120px 0 64px}
+  .hero{padding:120px 0 60px}
   .mock-kgrid{grid-template-columns:repeat(2,1fr)}
 }
 </style>
 </head>
 <body>
-
-<!-- ═══ GTM NOSCRIPT — substitua GTM-XXXXXXX ═══ -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-<!-- ═══ NAV ═══ -->
+<!-- NAV -->
 <nav>
   <div class="container">
     <div class="nav-inner">
       <div class="nav-logo">
-        <div class="nav-logo-mark">📊</div>
-        Dashboard AD5
+        <div class="nav-logo-mark">
+          <svg viewBox="0 0 24 24" fill="none">
+            <polyline points="3,17 8,11 13,14 21,5" stroke="#10b981" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="17,5 21,5 21,9" stroke="#10b981" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span><span class="nav-logo-roas">ROAS</span><span class="nav-logo-view">view</span></span>
       </div>
       <div class="nav-links">
         <a href="#funcionalidades">Funcionalidades</a>
@@ -224,105 +210,78 @@ footer{padding:40px 0;border-top:1px solid var(--border);text-align:center}
         <a href="#planos">Planos</a>
         <a href="#faq">FAQ</a>
       </div>
-      <a href="#planos" class="btn-primary nav-cta" onclick="gtmEvent('click_nav_cta')">
-        Começar agora →
-      </a>
+      <a href="#planos" class="btn-primary nav-cta" onclick="gtmEvent('click_nav_cta')">Quero meu ROAS →</a>
     </div>
   </div>
 </nav>
 
-<!-- ═══ HERO ═══ -->
+<!-- HERO -->
 <section class="hero">
   <div class="container">
-    <div class="hero-tag">
-      <span class="tag tag-purple">✦ Conectado ao Google Analytics 4</span>
-    </div>
-    <h1>Pare de adivinhar.<br>Comece a <span>decidir com dados</span>.</h1>
-    <p class="hero-sub">Dashboard profissional que transforma os dados do GA4 em visão clara de vendas, ROAS e performance de campanhas — sem planilha, sem agência, sem enrolação.</p>
+    <div class="hero-tag"><span class="tag tag-green">✦ Conectado ao Google Analytics 4</span></div>
+    <h1>Pare de adivinhar o ROAS.<br>Veja o <span class="hl">número real</span>, agora.</h1>
+    <p class="hero-sub">ROASview conecta direto no seu GA4 e mostra vendas, custo, ROAS e campanhas em tempo real — sem planilha, sem agência, sem achismo.</p>
     <div class="hero-ctas">
-      <a href="https://hotmart.com/SEU-LINK-AQUI" class="btn-primary" onclick="gtmEvent('click_hero_cta_primary')" target="_blank">
-        Quero meu dashboard →
-      </a>
-      <a href="#como-funciona" class="btn-secondary" onclick="gtmEvent('click_hero_cta_secondary')">
-        Ver como funciona
-      </a>
+      <a href="https://hotmart.com/SEU-LINK-AQUI" class="btn-primary" onclick="gtmEvent('click_hero_cta_primary')" target="_blank">Ver meu ROAS agora →</a>
+      <a href="#como-funciona" class="btn-secondary" onclick="gtmEvent('click_hero_cta_secondary')">Como funciona</a>
     </div>
     <div class="hero-proof">
+      <div class="proof-item"><span class="proof-dot"></span>Dados reais do GA4</div>
       <div class="proof-item"><span class="proof-dot"></span>Sem instalação técnica</div>
       <div class="proof-item"><span class="proof-dot"></span>Acesso em minutos</div>
       <div class="proof-item"><span class="proof-dot"></span>Funciona no celular</div>
-      <div class="proof-item"><span class="proof-dot"></span>Dados reais do GA4</div>
     </div>
-
-    <!-- MOCKUP VISUAL DO DASHBOARD -->
-    <div class="mockup-wrap" style="margin-top:56px">
+    <!-- MOCKUP -->
+    <div class="mockup-wrap" style="margin-top:52px">
       <div class="mockup-bar">
         <div class="dot" style="background:#ff5f57"></div>
         <div class="dot" style="background:#febc2e"></div>
         <div class="dot" style="background:#28c840"></div>
-        <div class="mockup-url">dashboard.ad5experts.online</div>
+        <div class="mockup-url">app.roasview.com.br</div>
       </div>
       <div class="mockup-body">
-        <!-- KPI cards -->
         <div class="mock-kgrid">
-          <div class="mock-kcard mk1">
-            <div class="mock-klbl">Vendas totais</div>
-            <div class="mock-kval">R$ 48.320</div>
-            <div class="mock-kdelta delta-up">▲ 12,4%</div>
-          </div>
-          <div class="mock-kcard mk2">
-            <div class="mock-klbl">Investimento</div>
-            <div class="mock-kval">R$ 9.140</div>
-            <div class="mock-kdelta delta-dn">▼ 3,1%</div>
-          </div>
-          <div class="mock-kcard mk3">
-            <div class="mock-klbl">ROAS</div>
-            <div class="mock-kval">5,29×</div>
-            <div class="mock-kdelta delta-up">▲ 16,0%</div>
-          </div>
-          <div class="mock-kcard mk4">
-            <div class="mock-klbl">Ticket médio</div>
-            <div class="mock-kval">R$ 154</div>
-            <div class="mock-kdelta delta-up">▲ 8,2%</div>
-          </div>
+          <div class="mock-kcard mk1"><div class="mock-klbl">ROAS</div><div class="mock-kval">5,29×</div><div class="mock-kdelta delta-up">▲ 16,0%</div></div>
+          <div class="mock-kcard mk2"><div class="mock-klbl">Investimento</div><div class="mock-kval">R$ 9.140</div><div class="mock-kdelta delta-dn">▼ 3,1%</div></div>
+          <div class="mock-kcard mk3"><div class="mock-klbl">Vendas</div><div class="mock-kval">R$ 48.320</div><div class="mock-kdelta delta-up">▲ 12,4%</div></div>
+          <div class="mock-kcard mk4"><div class="mock-klbl">Ticket médio</div><div class="mock-kval">R$ 154</div><div class="mock-kdelta delta-up">▲ 8,2%</div></div>
         </div>
-        <!-- Charts -->
         <div class="mock-charts">
           <div class="mock-chart-card">
-            <div class="mock-chart-title">Histórico de vendas — últimos 30 dias</div>
+            <div class="mock-ctitle">Histórico de vendas — 30 dias</div>
             <div class="mock-bars">
-              <div class="mock-bar" style="height:30%;background:#7c5cfc"></div>
-              <div class="mock-bar" style="height:45%;background:#7c5cfc"></div>
-              <div class="mock-bar" style="height:38%;background:#7c5cfc"></div>
-              <div class="mock-bar" style="height:55%;background:#7c5cfc"></div>
-              <div class="mock-bar" style="height:48%;background:#7c5cfc"></div>
-              <div class="mock-bar" style="height:62%;background:#7c5cfc"></div>
-              <div class="mock-bar" style="height:52%;background:#7c5cfc"></div>
-              <div class="mock-bar" style="height:70%;background:#7c5cfc"></div>
-              <div class="mock-bar" style="height:65%;background:#7c5cfc"></div>
-              <div class="mock-bar" style="height:80%;background:#a78bfa"></div>
-              <div class="mock-bar" style="height:72%;background:#a78bfa"></div>
-              <div class="mock-bar" style="height:88%;background:#a78bfa"></div>
-              <div class="mock-bar" style="height:76%;background:#a78bfa"></div>
-              <div class="mock-bar" style="height:95%;background:#10d9a0"></div>
-              <div class="mock-bar" style="height:100%;background:#10d9a0"></div>
+              <div class="mock-bar" style="height:28%;background:#10b981;opacity:.5"></div>
+              <div class="mock-bar" style="height:40%;background:#10b981;opacity:.6"></div>
+              <div class="mock-bar" style="height:35%;background:#10b981;opacity:.6"></div>
+              <div class="mock-bar" style="height:52%;background:#10b981;opacity:.7"></div>
+              <div class="mock-bar" style="height:45%;background:#10b981;opacity:.7"></div>
+              <div class="mock-bar" style="height:60%;background:#10b981;opacity:.8"></div>
+              <div class="mock-bar" style="height:50%;background:#10b981;opacity:.8"></div>
+              <div class="mock-bar" style="height:68%;background:#10b981;opacity:.85"></div>
+              <div class="mock-bar" style="height:62%;background:#10b981;opacity:.85"></div>
+              <div class="mock-bar" style="height:78%;background:#10b981"></div>
+              <div class="mock-bar" style="height:72%;background:#10b981"></div>
+              <div class="mock-bar" style="height:88%;background:#10b981"></div>
+              <div class="mock-bar" style="height:76%;background:#10b981"></div>
+              <div class="mock-bar" style="height:95%;background:#0d9668"></div>
+              <div class="mock-bar" style="height:100%;background:#0d9668"></div>
             </div>
           </div>
           <div class="mock-chart-card">
-            <div class="mock-chart-title">Por canal</div>
+            <div class="mock-ctitle">Por canal</div>
             <div class="mock-donut-wrap">
-              <svg class="mock-donut" viewBox="0 0 60 60">
+              <svg width="60" height="60" viewBox="0 0 60 60">
                 <circle cx="30" cy="30" r="22" fill="none" stroke="#1c1a32" stroke-width="12"/>
-                <circle cx="30" cy="30" r="22" fill="none" stroke="#7c5cfc" stroke-width="12" stroke-dasharray="69 69" stroke-dashoffset="0" transform="rotate(-90 30 30)"/>
-                <circle cx="30" cy="30" r="22" fill="none" stroke="#10d9a0" stroke-width="12" stroke-dasharray="28 110" stroke-dashoffset="-69" transform="rotate(-90 30 30)"/>
-                <circle cx="30" cy="30" r="22" fill="none" stroke="#fbbf24" stroke-width="12" stroke-dasharray="15 123" stroke-dashoffset="-97" transform="rotate(-90 30 30)"/>
-                <circle cx="30" cy="30" r="22" fill="none" stroke="#ff5c5c" stroke-width="12" stroke-dasharray="26 112" stroke-dashoffset="-112" transform="rotate(-90 30 30)"/>
+                <circle cx="30" cy="30" r="22" fill="none" stroke="#10b981" stroke-width="12" stroke-dasharray="69 69" stroke-dashoffset="0" transform="rotate(-90 30 30)"/>
+                <circle cx="30" cy="30" r="22" fill="none" stroke="#7c5cfc" stroke-width="12" stroke-dasharray="28 110" stroke-dashoffset="-69" transform="rotate(-90 30 30)"/>
+                <circle cx="30" cy="30" r="22" fill="none" stroke="#f59e0b" stroke-width="12" stroke-dasharray="15 123" stroke-dashoffset="-97" transform="rotate(-90 30 30)"/>
+                <circle cx="30" cy="30" r="22" fill="none" stroke="#ef4444" stroke-width="12" stroke-dasharray="26 112" stroke-dashoffset="-112" transform="rotate(-90 30 30)"/>
               </svg>
               <div class="mock-donut-leg">
-                <div class="mock-leg-item"><span class="mock-leg-dot" style="background:#7c5cfc"></span>Paid Search 50%</div>
-                <div class="mock-leg-item"><span class="mock-leg-dot" style="background:#10d9a0"></span>Organic 20%</div>
-                <div class="mock-leg-item"><span class="mock-leg-dot" style="background:#fbbf24"></span>Social 11%</div>
-                <div class="mock-leg-item"><span class="mock-leg-dot" style="background:#ff5c5c"></span>Direct 19%</div>
+                <div class="mock-leg-item"><span class="mock-leg-dot" style="background:#10b981"></span>Paid 50%</div>
+                <div class="mock-leg-item"><span class="mock-leg-dot" style="background:#7c5cfc"></span>Organic 20%</div>
+                <div class="mock-leg-item"><span class="mock-leg-dot" style="background:#f59e0b"></span>Social 11%</div>
+                <div class="mock-leg-item"><span class="mock-leg-dot" style="background:#ef4444"></span>Direct 19%</div>
               </div>
             </div>
           </div>
@@ -332,188 +291,106 @@ footer{padding:40px 0;border-top:1px solid var(--border);text-align:center}
   </div>
 </section>
 
-<!-- ═══ DOR ═══ -->
+<!-- DOR -->
 <section class="pain" id="problema">
   <div class="container">
     <div class="section-header">
       <span class="tag tag-purple">O problema</span>
-      <h2>Você investe em tráfego mas não sabe o que está funcionando</h2>
-      <p>Gestor de e-commerce sem dashboard claro é como pilotar no escuro. Você voa, mas não sabe pra onde.</p>
+      <h2>Você investe em tráfego mas não sabe<br>o que está <span class="hl">realmente funcionando</span></h2>
+      <p>Gestor de e-commerce sem dados confiáveis toma decisão no escuro — e quem paga a conta é o seu ROAS.</p>
     </div>
     <div class="pain-grid">
-      <div class="pain-card">
-        <div class="pain-ico">📊</div>
-        <div class="pain-title">Dados espalhados em mil lugares</div>
-        <div class="pain-desc">GA4 aqui, Meta Ads ali, planilha no Google Drive, relatório da agência no e-mail. Tudo fragmentado, nada integrado.</div>
-      </div>
-      <div class="pain-card">
-        <div class="pain-ico">⏱️</div>
-        <div class="pain-title">Horas perdidas montando relatório</div>
-        <div class="pain-desc">Você ou alguém da equipe gasta horas toda semana copiando números de uma tela para outra. Isso não é análise — é trabalho manual.</div>
-      </div>
-      <div class="pain-card">
-        <div class="pain-ico">💸</div>
-        <div class="pain-title">Budget indo para campanha errada</div>
-        <div class="pain-desc">Sem visão clara de ROAS por campanha, você descobre que estava investindo na errada só quando o mês fecha no vermelho.</div>
-      </div>
-      <div class="pain-card">
-        <div class="pain-ico">🤷</div>
-        <div class="pain-title">Decisões baseadas em achismo</div>
-        <div class="pain-desc">"Acho que o Google Ads está indo bem." "Parece que o orgânico caiu." Sem número na tela, tudo é suposição.</div>
-      </div>
+      <div class="pain-card"><div class="pain-ico">📊</div><div class="pain-title">Dados espalhados em mil lugares</div><div class="pain-desc">GA4 aqui, Meta Ads ali, planilha no Drive, relatório da agência no e-mail. Nada integrado, nada confiável.</div></div>
+      <div class="pain-card"><div class="pain-ico">⏱️</div><div class="pain-title">Horas perdidas montando relatório</div><div class="pain-desc">Você gasta horas toda semana copiando números de uma tela para outra. Isso não é análise — é retrabalho.</div></div>
+      <div class="pain-card"><div class="pain-ico">💸</div><div class="pain-title">Budget indo para campanha errada</div><div class="pain-desc">Sem visão clara de ROAS por campanha, você descobre que estava investindo na errada quando o mês fecha.</div></div>
+      <div class="pain-card"><div class="pain-ico">🤷</div><div class="pain-title">Decisão baseada em achismo</div><div class="pain-desc">"Acho que o Google Ads está indo bem." Sem o número na tela, tudo é suposição. E suposição custa dinheiro.</div></div>
     </div>
   </div>
 </section>
 
-<!-- ═══ FEATURES ═══ -->
+<!-- FEATURES -->
 <section id="funcionalidades">
   <div class="container">
     <div class="section-header">
       <span class="tag tag-green">✦ O que você vai ver</span>
-      <h2>Tudo que importa para o seu e-commerce, em uma tela</h2>
-      <p>Conectado direto ao GA4, atualizado com seus dados reais. Nenhum número inventado.</p>
+      <h2>Tudo que importa para o e-commerce,<br><span class="hl">em uma tela só</span></h2>
+      <p>Conectado direto ao GA4, com seus dados reais. Nenhum número estimado ou defasado.</p>
     </div>
     <div class="features-grid">
-      <div class="feat-card">
-        <div class="feat-ico" style="background:rgba(124,92,252,.15)">💰</div>
-        <div class="feat-title">KPIs em tempo real</div>
-        <div class="feat-desc">Vendas, investimento, ROAS, ticket médio, CAC e taxa de conversão — com variação percentual comparando ao período anterior.</div>
-        <span class="feat-badge">8 indicadores</span>
-      </div>
-      <div class="feat-card">
-        <div class="feat-ico" style="background:rgba(16,217,160,.15)">📈</div>
-        <div class="feat-title">Histórico visual de vendas</div>
-        <div class="feat-desc">Gráficos de linha dia a dia ou mês a mês. Compare dois períodos lado a lado e veja exatamente onde a curva subiu ou caiu.</div>
-        <span class="feat-badge">Comparativo automático</span>
-      </div>
-      <div class="feat-card">
-        <div class="feat-ico" style="background:rgba(251,191,36,.15)">🎯</div>
-        <div class="feat-title">Performance por campanha</div>
-        <div class="feat-desc">ROAS individual de cada campanha com código de cor verde/amarelo/vermelho. Você vê em segundos o que está queimando budget.</div>
-        <span class="feat-badge">First e last click</span>
-      </div>
-      <div class="feat-card">
-        <div class="feat-ico" style="background:rgba(255,92,92,.15)">🔻</div>
-        <div class="feat-title">Funil de conversão completo</div>
-        <div class="feat-desc">Do page view até a compra: veja onde os usuários abandonam. Abandono de carrinho calculado automaticamente.</div>
-        <span class="feat-badge">6 etapas mapeadas</span>
-      </div>
-      <div class="feat-card">
-        <div class="feat-ico" style="background:rgba(124,92,252,.15)">🍩</div>
-        <div class="feat-title">Receita por origem e canal</div>
-        <div class="feat-desc">Donuts interativos por canal, origem, mídia, campanha, estado e categoria de produto. Clique para ver detalhes.</div>
-        <span class="feat-badge">6 dimensões</span>
-      </div>
-      <div class="feat-card">
-        <div class="feat-ico" style="background:rgba(16,217,160,.15)">🧠</div>
-        <div class="feat-title">Insights automáticos</div>
-        <div class="feat-desc">O sistema analisa os dados e entrega conclusões prontas: melhor origem, top campanha, alerta de queda de ROAS.</div>
-        <span class="feat-badge">Análise instantânea</span>
-      </div>
+      <div class="feat-card"><div class="feat-ico" style="background:rgba(16,185,129,.12)">📈</div><div class="feat-title">ROAS em tempo real</div><div class="feat-desc">O número que mais importa no topo da tela. Com variação vs período anterior para você saber se está subindo ou caindo.</div><span class="feat-badge">Atualizado automaticamente</span></div>
+      <div class="feat-card"><div class="feat-ico" style="background:rgba(124,92,252,.12)">💰</div><div class="feat-title">8 KPIs essenciais</div><div class="feat-desc">Vendas, investimento, ROAS, compras, ticket médio, CAC, conversão e abandono de carrinho. Tudo com delta % comparativo.</div><span class="feat-badge">8 indicadores</span></div>
+      <div class="feat-card"><div class="feat-ico" style="background:rgba(245,158,11,.12)">🎯</div><div class="feat-title">Performance por campanha</div><div class="feat-desc">ROAS individual de cada campanha com código de cor. Verde = escalar. Vermelho = pausar. Decisão em segundos.</div><span class="feat-badge">First e last click</span></div>
+      <div class="feat-card"><div class="feat-ico" style="background:rgba(239,68,68,.12)">🔻</div><div class="feat-title">Funil de conversão</div><div class="feat-desc">Do page view até a compra. Veja onde os usuários abandonam e quanto do seu carrinho não vira venda.</div><span class="feat-badge">6 etapas mapeadas</span></div>
+      <div class="feat-card"><div class="feat-ico" style="background:rgba(16,185,129,.12)">🍩</div><div class="feat-title">Receita por origem e canal</div><div class="feat-desc">Donuts interativos por canal, origem, mídia, campanha, estado e categoria. Saiba de onde vem cada real.</div><span class="feat-badge">6 dimensões</span></div>
+      <div class="feat-card"><div class="feat-ico" style="background:rgba(124,92,252,.12)">🧠</div><div class="feat-title">Insights automáticos</div><div class="feat-desc">O sistema analisa os dados e entrega conclusões prontas: melhor origem, top campanha, alerta de queda de ROAS.</div><span class="feat-badge">Análise instantânea</span></div>
     </div>
   </div>
 </section>
 
-<!-- ═══ NÚMEROS ═══ -->
+<!-- NÚMEROS -->
 <section class="numbers">
   <div class="container">
     <div class="section-header">
-      <span class="tag tag-purple">Por que funciona</span>
+      <span class="tag tag-green">Por que funciona</span>
       <h2>Números que justificam a decisão</h2>
     </div>
     <div class="numbers-grid">
-      <div class="num-item">
-        <div class="num-val">5 min</div>
-        <div class="num-lbl">para ter o dashboard funcionando com seus dados</div>
-      </div>
-      <div class="num-item">
-        <div class="num-val">8</div>
-        <div class="num-lbl">KPIs essenciais monitorados simultaneamente</div>
-      </div>
-      <div class="num-item">
-        <div class="num-val">100%</div>
-        <div class="num-lbl">conectado ao seu GA4 real, sem dado manual</div>
-      </div>
-      <div class="num-item">
-        <div class="num-val">R$0</div>
-        <div class="num-lbl">em infraestrutura — roda direto no navegador</div>
-      </div>
+      <div class="num-item"><div class="num-val">5 min</div><div class="num-lbl">para ter o dashboard com seus dados reais</div></div>
+      <div class="num-item"><div class="num-val">8</div><div class="num-lbl">KPIs essenciais monitorados simultaneamente</div></div>
+      <div class="num-item"><div class="num-val">100%</div><div class="num-lbl">conectado ao GA4 real, sem dado manual</div></div>
+      <div class="num-item"><div class="num-val">R$0</div><div class="num-lbl">em infraestrutura — roda direto no navegador</div></div>
     </div>
   </div>
 </section>
 
-<!-- ═══ COMO FUNCIONA ═══ -->
+<!-- COMO FUNCIONA -->
 <section id="como-funciona">
   <div class="container">
     <div class="section-header">
       <span class="tag tag-green">Simples assim</span>
-      <h2>Três passos para ter clareza total</h2>
+      <h2>Três passos para ter <span class="hl">clareza total</span></h2>
       <p>Sem instalar nada. Sem configurar servidor. Sem depender de TI.</p>
     </div>
-    <div class="steps-grid" style="margin-top:56px">
-      <div class="step-item">
-        <div class="step-num">1</div>
-        <div class="step-title">Assine e receba o acesso</div>
-        <div class="step-desc">Após a compra na Hotmart, você recebe um e-mail com o link do dashboard e seu acesso liberado em até 24h.</div>
-      </div>
-      <div class="step-item">
-        <div class="step-num">2</div>
-        <div class="step-title">Conecte sua conta Google</div>
-        <div class="step-desc">Faça login com o e-mail que tem acesso ao GA4 da sua loja. Um clique, sem configuração técnica.</div>
-      </div>
-      <div class="step-item">
-        <div class="step-num">3</div>
-        <div class="step-title">Seus dados aparecem na tela</div>
-        <div class="step-desc">Em segundos, vendas, ROAS e campanhas dos últimos 30 dias carregam automaticamente. É só analisar.</div>
-      </div>
+    <div class="steps-grid">
+      <div class="step-item"><div class="step-num">1</div><div class="step-title">Assine e receba o acesso</div><div class="step-desc">Após a compra, você recebe um e-mail com o link do ROASview e o acesso liberado em até 24h.</div></div>
+      <div class="step-item"><div class="step-num">2</div><div class="step-title">Conecte sua conta Google</div><div class="step-desc">Faça login com o e-mail que tem acesso ao GA4 da sua loja. Um clique, sem configuração técnica.</div></div>
+      <div class="step-item"><div class="step-num">3</div><div class="step-title">Veja seus dados na tela</div><div class="step-desc">ROAS, vendas e campanhas dos últimos 30 dias carregam automaticamente. É só analisar e decidir.</div></div>
     </div>
   </div>
 </section>
 
-<!-- ═══ PLANOS ═══ -->
+<!-- PLANOS -->
 <section class="plans" id="planos">
   <div class="container">
     <div class="section-header">
-      <span class="tag tag-purple">Planos</span>
+      <span class="tag tag-green">Planos</span>
       <h2>Escolha o seu plano</h2>
-      <p>Comece pelo Básico e faça upgrade quando quiser. Sem contrato, cancele quando precisar.</p>
+      <p>Comece pelo Básico e faça upgrade quando quiser. Sem contrato, cancele a qualquer momento.</p>
     </div>
     <div class="plans-grid">
-      <!-- PLANO BÁSICO -->
       <div class="plan-card">
         <div class="plan-name">Básico</div>
-        <div class="plan-price">
-          <span class="plan-curr">R$</span>
-          <span class="plan-val">29</span>
-          <span class="plan-period">,90/mês</span>
-        </div>
-        <div class="plan-desc">Tudo que você precisa para ter visão clara do e-commerce e parar de tomar decisões no escuro.</div>
+        <div class="plan-price"><span class="plan-curr">R$</span><span class="plan-val">29</span><span class="plan-period">,90/mês</span></div>
+        <div class="plan-desc">Tudo que você precisa para ter visão clara do ROAS e parar de tomar decisões no escuro.</div>
         <div class="plan-divider"></div>
         <ul class="plan-features">
           <li><span class="check">✓</span>Dashboard completo com GA4</li>
           <li><span class="check">✓</span>8 KPIs com variação vs período anterior</li>
-          <li><span class="check">✓</span>Gráficos de vendas, ROAS e investimento</li>
-          <li><span class="check">✓</span>Performance por campanha (first e last click)</li>
+          <li><span class="check">✓</span>ROAS, vendas e investimento por campanha</li>
           <li><span class="check">✓</span>Funil de conversão + abandono de carrinho</li>
+          <li><span class="check">✓</span>First e last click por campanha</li>
           <li><span class="check">✓</span>Insights automáticos</li>
           <li><span class="check">✓</span>Acesso mobile (PWA instalável)</li>
           <li><span class="check">✓</span>Suporte via WhatsApp</li>
           <li><span class="lock">○</span><span style="color:var(--text3)">Análise por IA — em breve</span></li>
         </ul>
-        <a href="https://hotmart.com/SEU-LINK-AQUI" class="plan-cta secondary" onclick="gtmEvent('click_plan_basic')" target="_blank">
-          Assinar Básico →
-        </a>
+        <a href="https://hotmart.com/SEU-LINK-AQUI" class="plan-cta secondary" onclick="gtmEvent('click_plan_basic')" target="_blank">Assinar Básico →</a>
       </div>
-      <!-- PLANO PREMIUM -->
       <div class="plan-card featured">
         <div class="plan-badge">⚡ Mais popular</div>
         <div class="plan-name">Premium</div>
-        <div class="plan-price">
-          <span class="plan-curr">R$</span>
-          <span class="plan-val">59</span>
-          <span class="plan-period">,90/mês</span>
-        </div>
-        <div class="plan-desc">Para quem quer a visão do dashboard mais análise consultiva gerada por IA com foco em resultado.</div>
+        <div class="plan-price"><span class="plan-curr">R$</span><span class="plan-val">59</span><span class="plan-period">,90/mês</span></div>
+        <div class="plan-desc">Dashboard completo mais análise consultiva gerada por IA com foco em resultado.</div>
         <div class="plan-divider"></div>
         <ul class="plan-features">
           <li><span class="check">✓</span>Tudo do plano Básico</li>
@@ -524,151 +401,99 @@ footer{padding:40px 0;border-top:1px solid var(--border);text-align:center}
           <li><span class="check">✓</span>Prioridade no suporte</li>
           <li><span class="check">✓</span>Acesso antecipado a novidades</li>
         </ul>
-        <a href="https://hotmart.com/SEU-LINK-AQUI" class="plan-cta primary" onclick="gtmEvent('click_plan_premium')" target="_blank">
-          Assinar Premium →
-        </a>
+        <a href="https://hotmart.com/SEU-LINK-AQUI" class="plan-cta primary" onclick="gtmEvent('click_plan_premium')" target="_blank">Assinar Premium →</a>
       </div>
     </div>
-    <div class="plan-guarantee">
-      🔒 &nbsp;Pagamento 100% seguro via Hotmart · Cancele quando quiser
-    </div>
+    <div class="plan-guarantee">🔒 &nbsp;Pagamento 100% seguro via Hotmart · Cancele quando quiser</div>
   </div>
 </section>
 
-<!-- ═══ FAQ ═══ -->
+<!-- FAQ -->
 <section id="faq">
   <div class="container">
     <div class="section-header">
-      <span class="tag tag-purple">Dúvidas</span>
+      <span class="tag tag-green">Dúvidas</span>
       <h2>Perguntas frequentes</h2>
     </div>
     <div class="faq-list">
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Preciso saber programar para usar? <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a"><p>Não. O acesso é simples: você clica em "Entrar com Google", usa o e-mail que já tem acesso ao GA4 da sua loja e pronto. Nenhuma configuração técnica.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Meus dados ficam seguros? <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a"><p>Sim. O dashboard lê os dados direto do seu GA4 usando a autenticação oficial do Google. Nenhum dado é armazenado em servidor externo. O acesso é protegido por e-mail autorizado.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Funciona para qualquer plataforma de e-commerce? <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a"><p>Funciona para qualquer loja que tenha o GA4 instalado com rastreamento de e-commerce: Shopify, WooCommerce, VTEX, Nuvemshop, Tray e outras. Se o GA4 registra as compras, o dashboard mostra.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Posso usar em mais de uma loja? <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a"><p>Sim. O plano permite múltiplas propriedades do GA4. Ao logar, você vê um seletor para escolher qual loja visualizar. Ideal para agências ou lojistas com mais de uma operação.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Os dados são atualizados em tempo real? <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a"><p>Os dados seguem o processamento do GA4, que tem latência de algumas horas para relatórios completos. O botão "Atualizar" busca os dados mais recentes disponíveis. Para vendas do dia atual, os dados costumam estar disponíveis até 4 horas após a compra.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Como funciona o suporte? <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a"><p>Suporte direto via WhatsApp. Para o plano Básico, atendimento em horário comercial. Para o Premium, prioridade no atendimento. Nenhum ticket, nenhum call center — fala direto com quem construiu.</p></div>
-      </div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Preciso saber programar para usar? <span class="faq-icon">+</span></button><div class="faq-a"><p>Não. Você clica em "Entrar com Google", usa o e-mail que já tem acesso ao GA4 da sua loja e pronto. Nenhuma configuração técnica.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Meus dados ficam seguros? <span class="faq-icon">+</span></button><div class="faq-a"><p>Sim. O ROASview lê os dados direto do seu GA4 usando a autenticação oficial do Google. Nenhum dado é armazenado em servidor externo. O acesso é protegido por e-mail autorizado.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Funciona para qualquer plataforma de e-commerce? <span class="faq-icon">+</span></button><div class="faq-a"><p>Funciona para qualquer loja com GA4 instalado e rastreamento de e-commerce ativo: Shopify, WooCommerce, VTEX, Nuvemshop, Tray e outras. Se o GA4 registra as compras, o ROASview mostra.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Posso usar em mais de uma loja? <span class="faq-icon">+</span></button><div class="faq-a"><p>Sim. O plano suporta múltiplas propriedades do GA4. Ao logar, você vê um seletor para escolher qual loja visualizar. Ideal para agências ou lojistas com mais de uma operação.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Os dados são atualizados em tempo real? <span class="faq-icon">+</span></button><div class="faq-a"><p>Os dados seguem o processamento do GA4, com latência de algumas horas para relatórios completos. O botão "Atualizar" busca sempre os dados mais recentes disponíveis.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Como funciona o suporte? <span class="faq-icon">+</span></button><div class="faq-a"><p>Suporte direto via WhatsApp. Para o plano Básico, atendimento em horário comercial. Para o Premium, prioridade no atendimento. Fala direto com quem construiu o produto.</p></div></div>
     </div>
   </div>
 </section>
 
-<!-- ═══ CTA FINAL ═══ -->
+<!-- CTA FINAL -->
 <section class="cta-final">
   <div class="container">
     <span class="tag tag-green" style="margin-bottom:20px;display:inline-flex">Comece hoje</span>
-    <h2>Seu e-commerce merece<br>mais do que achismo</h2>
-    <p>Acesso ao dashboard em minutos. Dados reais. Decisões melhores.</p>
-    <a href="https://hotmart.com/SEU-LINK-AQUI" class="btn-primary" style="font-size:1.05rem;padding:18px 40px" onclick="gtmEvent('click_footer_cta')" target="_blank">
-      Começar por R$ 29,90/mês →
-    </a>
-    <div style="margin-top:20px;font-size:.8rem;color:var(--text3)">
-      Sem fidelidade · Cancele quando quiser · Suporte via WhatsApp
-    </div>
+    <h2>Seu e-commerce merece<br>dados <span class="hl">confiáveis</span>.</h2>
+    <p>Acesso em minutos. ROAS real na tela. Decisões mais assertivas.</p>
+    <a href="https://hotmart.com/SEU-LINK-AQUI" class="btn-primary" style="font-size:1.05rem;padding:18px 40px" onclick="gtmEvent('click_footer_cta')" target="_blank">Ver meu ROAS agora →</a>
+    <div style="margin-top:18px;font-size:.78rem;color:var(--text3)">Sem fidelidade · Cancele quando quiser · Suporte via WhatsApp</div>
   </div>
 </section>
 
-<!-- ═══ FOOTER ═══ -->
+<!-- FOOTER -->
 <footer>
   <div class="container">
     <div class="footer-inner">
       <div class="footer-logo">
-        <div class="nav-logo-mark" style="width:28px;height:28px;font-size:13px">📊</div>
-        Dashboard AD5
+        <div class="nav-logo-mark" style="width:28px;height:28px;border-radius:7px">
+          <svg viewBox="0 0 24 24" fill="none" style="width:15px;height:15px">
+            <polyline points="3,17 8,11 13,14 21,5" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="17,5 21,5 21,9" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span><span style="color:var(--green)">ROAS</span>view</span>
       </div>
       <div class="footer-links">
         <a href="mailto:contato@ad5.com.br">contato@ad5.com.br</a>
-        <a href="https://wa.me/5511995446469" target="_blank">WhatsApp</a>
+        <a href="https://wa.me/5511995446469?text=Olá%2C%20gostaria%20de%20saber%20mais%20sobre%20o%20ROASview." target="_blank">WhatsApp</a>
         <a href="#planos">Planos</a>
       </div>
-      <div class="footer-copy">© 2025 AD5 Experts. Todos os direitos reservados.</div>
+      <div class="footer-copy">© 2025 ROASview. Todos os direitos reservados.</div>
     </div>
   </div>
 </footer>
 
 <script>
-/* ── FAQ toggle ── */
 function toggleFaq(btn){
   var item=btn.closest('.faq-item');
   var isOpen=item.classList.contains('open');
   document.querySelectorAll('.faq-item.open').forEach(function(el){el.classList.remove('open');});
   if(!isOpen)item.classList.add('open');
 }
-
-/* ── GTM dataLayer helper ── */
 function gtmEvent(eventName,extra){
   window.dataLayer=window.dataLayer||[];
   var payload={event:eventName};
   if(extra)Object.assign(payload,extra);
   window.dataLayer.push(payload);
 }
-
-/* ── Scroll reveal suave ── */
 var observer=new IntersectionObserver(function(entries){
   entries.forEach(function(e){
-    if(e.isIntersecting){
-      e.target.style.opacity='1';
-      e.target.style.transform='translateY(0)';
-    }
+    if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}
   });
 },{threshold:0.1});
 document.querySelectorAll('.feat-card,.pain-card,.plan-card,.step-item,.num-item').forEach(function(el){
-  el.style.opacity='0';
-  el.style.transform='translateY(24px)';
+  el.style.opacity='0';el.style.transform='translateY(22px)';
   el.style.transition='opacity .5s ease, transform .5s ease';
   observer.observe(el);
 });
-
-/* ── Nav scroll highlight ── */
 window.addEventListener('scroll',function(){
   var nav=document.querySelector('nav');
-  if(window.scrollY>60){nav.style.background='rgba(11,10,20,.95)';}
-  else{nav.style.background='rgba(11,10,20,.8)';}
+  nav.style.background=window.scrollY>60?'rgba(11,10,20,.97)':'rgba(11,10,20,.85)';
 });
-
-/* ── GTM: scroll depth ── */
 var scrollMarks={25:false,50:false,75:false,100:false};
 window.addEventListener('scroll',function(){
   var pct=Math.round((window.scrollY/(document.body.scrollHeight-window.innerHeight))*100);
   Object.keys(scrollMarks).forEach(function(mark){
-    if(!scrollMarks[mark]&&pct>=parseInt(mark)){
-      scrollMarks[mark]=true;
-      gtmEvent('scroll_depth',{depth:mark+'%'});
-    }
+    if(!scrollMarks[mark]&&pct>=parseInt(mark)){scrollMarks[mark]=true;gtmEvent('scroll_depth',{depth:mark+'%'});}
   });
 });
-
-/* ── GTM: tempo na página ── */
 setTimeout(function(){gtmEvent('time_on_page',{seconds:30});},30000);
 setTimeout(function(){gtmEvent('time_on_page',{seconds:60});},60000);
 setTimeout(function(){gtmEvent('time_on_page',{seconds:120});},120000);
